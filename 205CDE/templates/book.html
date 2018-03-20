@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+  <h1>{{book.name}}</h1>
+  <p class="text-primary">by {{book.author}}</p>
+  <hr>
+  <div>
+  	<img src="{{book.pic_url}}" align="right" class="rounded" alt="Cinque Terre">
+    <p>by {{book.author}}</p>
+    <p>Price : ${{book.price}}</p>
+    <p>Stock : {{book.stock}}</p>
+    <p>Description : {{book.description}}</p>
+     
+  </div>
+{% endblock %}

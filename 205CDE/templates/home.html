@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<div class="jumbotron text-center">
+	{% if session.logged_in == NULL %}
+		<h1>Welcome To Vincent's bookstore</h1>
+		<p class="lead">Sign up for more arrival news, promotions and online discounts now!</p>
+		<a href="/register" class="btn btn-primary btn-lg">Register</a>
+		<a href="/login" class="btn btn-success btn-lg">Login</a>
+	{% else %}
+		<h1>Welcome back to Vincent's Bookstore, {{session.username}}.</h1>
+	{% endif %}
+
+	<br><br><br>
+	{% include 'includes/_carousel.html' %}
+
+</div>
+
+{% endblock %}
