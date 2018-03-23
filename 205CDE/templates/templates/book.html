@@ -1,0 +1,43 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<img style="height: 600px;width: 450px" src="{{book.pic_url}}" align="right" class="rounded" alt="Cinque Terre">
+  <h1 class="text-primary">{{book.name}}</h1>
+  <p class="text-primary">by {{book.author}}</p>
+  
+  <hr>
+  <div>
+  	
+    <p>by {{book.author}}</p>
+    <p>Price : ${{book.price}}</p>
+    <p>Stock : {{book.stock}}</p>
+    <p style= " width:50%; word-wrap: break-word">Description : {{book.description}}</p>
+    {% if session.logged_in %}
+    <form action="{{url_for('add_order',category='no',bookid=book.id, item_per_page='no', page_no='no')}}" method="post">
+              <input type="submit" value="Add to cart" class="btn btn-danger">
+    </form>
+    {% endif %}
+  </div>
+
+  <h1>Comments</h1>
+  <hr>
+
+  <div style="width: 50%">
+    {% if session.logged_in %}
+    <form class="" action="/add-comment" method="POST" >
+    <input type="text" name="comment" placeholder="comment" value="{{request.form.comment}}"> 
+    <input type="hidden" name = "bookid" value={{book.id}}>
+    <button class="btn-outline-primary rounded" type="submit"> Add</button>
+    </form>
+    {% endif %}
+    <br>
+  <ul class="list-group">
+    {% for comment_list in comment_list %}
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+    <a href="#"><h3>{{comment_list.username}}</h3><small class="text-dark">{{comment_list.content}}</small></a>
+    <span class="badge badge-primary justify-content-end">added at {{comment_list.comment_date}}</span>
+    </li>
+    {% endfor %}
+  </ul>
+  </div>
+{% endblock %}

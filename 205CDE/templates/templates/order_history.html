@@ -1,0 +1,37 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+  <h1>Order History</h1><p class="text-primary text-left"> Welcome, {{session.username}}</p>
+  <hr>
+  <table class="table table-striped">
+    <tr>
+      <th>Name</th>
+      <th>Author</th>
+      <th>Book ID</th>
+      <th>Price</th>
+      <th>Order ID</th>
+      <th>Date</th>
+      <th>Paid</th>
+    </tr>
+    {% for the_book_list in the_book_list %}
+    <tr>
+		<td>{{the_book_list.name}}</td>
+		<td>{{the_book_list.author}}</td>
+		<td>{{the_book_list.id}}</td>
+		<td>${{the_book_list.price}}</td>
+	   <td>{{the_book_list.order_id}}</td>
+	   <td>{{the_book_list.order_date}}</td>
+     <td>{{the_book_list.paid}}</td>
+    </tr>
+    {% endfor %}
+    <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    </tr>
+  </table>
+{% endblock %}
